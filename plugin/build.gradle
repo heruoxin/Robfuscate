@@ -1,0 +1,36 @@
+//removed java plugin
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group='com.catchingnow.robfuscate'
+version='1.0.1-SNAPSHOT'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //提交到远程服务器：
+            // repository(url: "http://www.xxx.com/repos") {
+            //    authentication(userName: "admin", password: "admin")
+            // }
+            //本地的Maven地址设
+            repository(url: uri('/tmp/repos'))
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi()//gradle sdk
+    implementation localGroovy()//groovy sdk
+    implementation 'com.android.tools.build:gradle:3.3.2'
+    implementation 'com.android.tools.build:gradle-api:3.3.2'
+    implementation 'org.ow2.asm:asm:7.1'
+    implementation 'org.ow2.asm:asm-commons:7.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
