@@ -77,7 +77,7 @@ class RoInject {
 
         @Override
         FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
-            if ("I".equals(desc)) {
+            if ("I".equals(desc) && value != null) {
                 def field = new SavedIntField()
                 field.className = this.className
                 field.access = access
@@ -116,7 +116,7 @@ class RoInject {
 
         @Override
         FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
-            if ("I".equals(desc)) {
+            if ("I".equals(desc) && value != null) {
                 return super.visitField(access, name, desc, null, null);
             } else {
                 return super.visitField(access, name, desc, signature, value);
