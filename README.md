@@ -14,6 +14,10 @@ Obfuscate the int index of R.id/R.string/R.layout… in the classes.dex of Andro
 
 ![img](screenshots/after.png)
 
+### Limitation
+
+It only works for R in the sub modules. For app level module, R.id will be replaced to static int value before Robfuscate so it will not work.
+
 
 ## Usage
 
